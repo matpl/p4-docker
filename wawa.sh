@@ -9,6 +9,7 @@ sleep 2
 p4 client > /dev/null 2>&1
 p4 configure set security=0
 p4 user -f guest > /dev/null 2>&1
+echo "$(cat permissions.txt)" | p4 group -i
 
 find /depot -type f -print | p4 -x - add
 
