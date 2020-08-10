@@ -1,0 +1,27 @@
+{
+  "name": "@matpl/table",
+  "version": "0.1.19",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matpl/wawa-table.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "author": "mplourde",
+  "license": "ISC",
+  "dependencies": {
+    "lit-element": "^2.1.0",
+    "lit-html": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.4.3"
+  },
+  "files": [
+    "**.js",
+    "**.d.ts"
+  ]
+}

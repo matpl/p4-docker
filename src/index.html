@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <script type="module" src="./wawa-table.js"></script>
+        <script>
+            setTimeout(() => {
+                document.querySelector("wawa-table").fetchData = async (pageNumber, pageSize) => {
+                    await new Promise((resolve, reject) => {
+                        // simulate network call
+                        setTimeout(() => {
+                            resolve();
+                        }, 200);
+                    });
+                    let items = [];
+                    for(let i = 0; i < pageSize; i++) {
+                        items.push({name: "name " + (pageNumber * pageSize + i)});
+                        if(i == 5) {
+                            setTimeout(() => {
+                                items[5].name = "NOOOOOO";
+                            }, 6000);
+                        }
+                    }
+
+                    return items;
+                }
+            }, 2000);
+        </script>
+        <link href="https://fonts.googleapis.com/css?family=Varela&display=swap" rel="stylesheet">
+        <style>
+            wawa-table {
+                font-size: 18px;
+                font-family: Varela;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="margin-left:100px;position:relative;">
+            <wawa-table monitor="true" rowHeight="50">
+                <template is="header-template">
+                    <tr is="wawa-header-tr" style="font-weight:bold;background-color:#6c7ae0;color:white;height:60px;text-align:left;">
+                        <th resizable>Name</span></th>
+                        <th resizable>Info (table scroll offset: ${table.scrollOffset})</th>
+                        <th resizable>Wawa</th>
+                    </tr>
+                </template>
+                <template is="row-template">
+                    <tr style="height:50px;color:gray;background-color:${index % 2 === 0 ? 'white' : '#f8f6ff'};">
+                        <td @click="${item.wawa}" style="padding-left:40px;">
+                            ${item.name}
+                        </td>
+                        <td style="padding-left:40px;">
+                            ${index}
+                        </td>
+                        <td style="padding-left:40px;">
+                            ${index}
+                        </td>
+                    </tr>
+                </template>
+                <template is="loading-template">
+                    <div style='position:relative;bottom: 0px;width:100%;text-align:center;font-style:italic;color:#757575;'>WAWA...</div>
+                </template>
+            </wawa-table>
+        </div>
+    </body>
+</html>
