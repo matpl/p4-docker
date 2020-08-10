@@ -7,6 +7,7 @@ bash /usr/local/bin/setup-perforce.sh
 sleep 2
 
 p4 client > /dev/null 2>&1
+p4 configure set security=0
 p4 user -f guest > /dev/null 2>&1
 
 find /depot -type f -print | p4 -x - add
